@@ -19,13 +19,13 @@ class Product(models.Model):
 	comments = models.CharField(max_length=200, verbose_name='商品説明')
 	size = models.CharField(max_length=50, verbose_name='サイズ')
 	campaign = models.CharField(max_length=100, verbose_name='キャンペ－ン説明', blank=True, null=True)
-ingredients = models.CharField(max_length=50, verbose_name='原材料')
+	ingredients = models.CharField(max_length=50, verbose_name='原材料')
 
-class Meta:
-	db_table = 'products'
+	class Meta:
+		db_table = 'products'
 
-def __str__(self):
-	return self.name
+	def __str__(self):
+		return self.name
 
 
 class ProductPicture(models.Model):
