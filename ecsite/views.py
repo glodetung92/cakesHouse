@@ -33,3 +33,17 @@ class ProductDetailView(DetailView):
 			mycartitem = (CartItem.objects.filter(user_id=user)).values_list('product_id')
 			context['cart_contents'] = Product.objects.filter(id__in=mycartitem)
 		return context
+
+
+class CartView(ListView):
+	model = CartItem
+	template_name = 'ecsite/cart.html'
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		user = self.request.user
+		cartitem = CartItem.objects.filter(user=user)
+		if len(cartitem) > 0:
+			# check product is isset on cart
+			product = CartItem.objects.filter(product=kwargs['product'])
+		else:
+			cartitem = CartItem(qty=1, user=user, product

@@ -11,7 +11,7 @@
                        {% if forloop.first %}
                            <li><a href="{% url 'ecsite:product_detail' pk=product.id %}">
                                <img class="rounded img-fluid d-inline-block" width="200px" height="200px"
-								src={{ picture.picture.url }}>
+							src={{ picture.picture.url }}>
                                {{ product.name }}</a></li>
                        {% endif %}
                    {% endfor %}

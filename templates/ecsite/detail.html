@@ -8,7 +8,7 @@
                <aside class="col-md-5 offset-md-1">
                    <div class="card">
                        <div class="card-header">
-                           {{ product.name }}
+						   <h3 class="fw-bolder">{{ product.name }}</h3>
                        </div>
                        <div class="card-body text-center">
                            {% for picture in product.productpicture_set.all %}
@@ -29,14 +29,14 @@
                    </div>
                </aside>
                <div class="col-md-5">
-                   <p>商品説明：{{ product.comments }}</p>
-                   <p>大きさ：{{ product.size }}</p>
-                   <p>原材料：{{ product.ingredients }}</p>
+				   <p><b>商品説明：</b>{{ product.comments }}</p>
+				   <p><b>大きさ：</b>{{ product.size }} cm</p>
+				   <p><b>原材料：</b>{{ product.ingredients }}</p>
                    <hr>
-                   <p>価格：{{ product.price }} 円</p>
+				   <p><b>価格：</b>{{ product.price }} 円</p>
                    {% if product.stock %}
                        {% if product.stock < 30 %}
-                           <p>残りわずか：{{ product.stock }}です</p>
+					   <p><b>残りわずか：</b>{{ product.stock }}です</p>
                        {% endif %}
                        {% if user.is_authenticated %}
                            {% if product in cart_contents %}
@@ -44,9 +44,9 @@
                                    すでにカートに入っています<i class="fas fa-shopping-cart"></i>
                                </button>
                            {% else %}                               
-                                <button type="submit" class="btn btn-sm btn-success" name="button">
-                                   購入する<i class="fas fa-shopping-cart"></i>
-                                </button>                                   
+								<a class="btn btn-sm btn-success" href="{% url 'ecsite:cart' %}">購入する
+									<i class="fas fa-shopping-cart"></i>
+								</a>
                            {% endif %}
                        {% endif %}
                    {% endif %}
